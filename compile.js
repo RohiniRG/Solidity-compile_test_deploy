@@ -12,4 +12,6 @@ const inboxPath = path.resolve(__dirname, 'contracts', 'inbox.sol');
 const source = fs.readFileSync(inboxPath, 'utf8');
 
 // 1 indicates compile one contract
+// Adding .contracts[':Inbox'] helps us get only the essential properties i.e., bytecode
+// and interface which are present in the ':Inbox' key
 module.exports = solc.compile(source, 1).contracts[':Inbox'];

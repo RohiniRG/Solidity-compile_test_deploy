@@ -32,6 +32,18 @@ describe('Inbox', () => {
         // test passes only if it returns a truthy value
         assert.ok(contract.options.address)
     })
+
+    it ('has a default message', async () => {
+        // Calling the message variable's getter method from the contract
+        const msg = await contract.methods.message().call()
+        assert.equal(msg, 'Hi there')
+    })
+
+    it ('changes the message', async () => {
+        await contract.methods.setMessage('Bye').send({from: fetchedAccounts[0]})
+        const msg = await contract.methods.message().call()
+        assert.equal(msg, 'Bye')
+    })
 })
 
 // Sample test

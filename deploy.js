@@ -1,11 +1,13 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider')
 const Web3 = require('web3')
 const {interface, bytecode} = require('./compile')
+const dotenv = require('dotenv');
+dotenv.config();
 
 // ADD mnemonics and rinkeby API for your account
 const provider = new HDWalletProvider(
-    "",
-    ""
+    `${process.env.MNEMONIC}`,
+    `${process.env.RINKEBY_API}`
 )
 
 const web3 = new Web3(provider)
